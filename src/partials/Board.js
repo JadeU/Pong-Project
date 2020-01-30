@@ -7,7 +7,7 @@ export default class Board {
   }
   render(svg) {
     //...
-    let boardSvg = document.createElementNS(SVG_NS, "rect");
+    const boardSvg = document.createElementNS(SVG_NS, "rect");
 
     boardSvg.setAttributeNS(null, "x", 0);
     boardSvg.setAttributeNS(null, "y", 0);
@@ -16,14 +16,15 @@ export default class Board {
     boardSvg.setAttributeNS(null, "fill", "#353535");
     svg.appendChild(boardSvg);
 
-    let lineSvg = document.createElementNS(SVG_NS, "line");
+    const lineSvg = document.createElementNS(SVG_NS, "line");
 
-    lineSvg.setAttributeNS(null, "x1", 256);
-    lineSvg.setAttributeNS(null, "x2", 256);
+    lineSvg.setAttributeNS(null, "x1", this.width/2);
+    lineSvg.setAttributeNS(null, "x2", this.width/2);
     lineSvg.setAttributeNS(null, "y1", 0);
-    lineSvg.setAttributeNS(null, "y2", 256);
+    lineSvg.setAttributeNS(null, "y2", this.height);
     lineSvg.setAttributeNS(null, "stroke", "#ffffff");
-    lineSvg.setAttributeNS(null, "stroke-dasharray", "10 15");
+    lineSvg.setAttributeNS(null, "stroke-width", 4);
+    lineSvg.setAttributeNS(null, "stroke-dasharray", "20 15", "white");
     svg.appendChild(lineSvg);
   }
 }

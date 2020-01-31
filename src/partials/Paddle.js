@@ -25,16 +25,17 @@ export default class Paddle {
   //moves paddle up
 
   moveUp() {
-    this.y = this.y - this.speed;
+    this.y = Math.max(0, this.y - this.speed);
     console.log("up! was pressed");
-    Math.min(0,-1);
+    
   }
 
   //moves paddle down
 
   moveDown() {
-    this.y = this.y + this.speed;
+    this.y =Math.min(this.boardHeight - this.height, this.y + this.speed);
     console.log("down! was pressed");
+   
   }
 
   render(svg) {

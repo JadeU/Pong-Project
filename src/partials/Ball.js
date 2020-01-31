@@ -25,12 +25,31 @@ export default class Ball {
         this.vx = (6- Math.abs(this.vy)) * this.direction;
     }
 
-    ballMove(){
+    wallCollision() {
+        //did the ball hit the top and the bottom walls?
+        if ((this.y + this.radius >= this.boardHeight) || (this.y - this.radius <= 0)) {
+            this.vy = this.vy * -1;  
+        } 
+
+        if ((this.x - this.radius >= this.boardWidth) || (this.x + this.radius <= 0))
+        this.reset();
+
+        //did the ball hit the left or right walls? If so, reset.
+    } 
+
+    // paddleCollision(paddle1, paddle2) {
+    // //     // did the ball collide with the paddles? If so, reverse direction.
+    // //     if ((this.x + this.radius >= this.boardWidth) || (this.x - this.radius <= 0)) {
+    // //         this.vx = this.vx * -1;
+    // //     }
+    // // }
+
+    ballMove() {
         this.x = this.x + this.vx;
         this.y = this.y + this.vy;
     }
 
-render(svg) {
+render(svg, paddle1, paddle2) {
 
     let ballCircle = document.createElementNS(SVG_NS, "circle");
     
@@ -40,6 +59,9 @@ render(svg) {
     ballCircle.setAttributeNS(null, "fill", "white"); 
     svg.appendChild(ballCircle);
     this.ballMove();
+    this.wallCollision();
+    // this.paddleCollision(paddle1, paddle2);
+   
 }
 
-  }
+}

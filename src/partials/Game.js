@@ -56,6 +56,7 @@ export default class Game {
     this.board.render(svg);
     this.paddle1.render(svg);
     this.paddle2.render(svg);
-    this.ballCircle.render(svg);
+    this.ballCircle.render(svg, this.paddle1, this.paddle2); 
+
   }
 }

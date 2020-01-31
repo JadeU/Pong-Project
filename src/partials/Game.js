@@ -12,7 +12,7 @@ export default class Game {
     this.board = new Board(this.width, this.height);
     this.paddle1 = new Paddle(this.height, 8, 56, 10, 100); 
     this.paddle2 = new Paddle(this.height, 8, 56, 494, 100); 
-    this.ballCircle = new Ball(8,256,128);
+    this.ballCircle = new Ball(8, this.width, this.height);
     // Other code goes here...
   }
 

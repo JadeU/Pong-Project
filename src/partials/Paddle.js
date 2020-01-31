@@ -22,6 +22,14 @@ export default class Paddle {
     });
   }
 
+getScore(){
+    return this.score
+}
+
+increaseScore(){
+    this.score = this.score +1;
+}
+
 getPaddlePosition(){
     const position ={
         top:this.y, 

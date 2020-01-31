@@ -5,7 +5,7 @@ export default class Ball {
     this.radius = radius;
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
-    this.direction = 1;
+    this.direction = 1; 
     this.x = this.boardWidth / 2;
     this.y = this.boardHeight / 2;
     this.direction = 1;
@@ -29,9 +29,20 @@ export default class Ball {
       this.vy = this.vy * -1;
     }
 
-    if (this.x - this.radius >= this.boardWidth || this.x + this.radius <= 0)
+    if (this.x - this.radius >= this.boardWidth){
+    paddle1.increaseScore(); 
+    this.direction = -1;
       this.reset();
+  } else if (this.x + this.radius <= 0) {
+    paddle2.increaseScore();
+    this.direction =1; 
+    this.reset();
+
   }
+
+  }
+
+
 
   paddleCollision(paddle1, paddle2) {
     if (this.vx < 0) {
@@ -69,7 +80,7 @@ export default class Ball {
     ballCircle.setAttributeNS(null, "fill", "white");
     svg.appendChild(ballCircle);
     this.ballMove();
-    this.wallCollision();
+    this.wallCollision(paddle1, paddle2);
     this.paddleCollision(paddle1, paddle2);
   }
 }

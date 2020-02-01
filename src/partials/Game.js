@@ -3,7 +3,10 @@ import {
   PADDLE_WIDTH,
   PADDLE_HEIGHT,
   BALL_RADIUS,
-  PADDLE_GAP
+  PADDLE_GAP,
+  PADDLE_SPEED,
+  KEYS,
+
 } from "../settings";
 import Board from "./Board";
 import Paddle from "./Paddle";
@@ -15,6 +18,7 @@ export default class Game {
     this.element = element;
     this.width = width;
     this.height = height;
+    this.paused = false;
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
 
@@ -27,7 +31,7 @@ export default class Game {
       PADDLE_GAP,
       paddle_mid,
       "w",
-      "s"
+      "s",
     );
     this.paddle2 = new Paddle(
       this.height,
@@ -36,7 +40,7 @@ export default class Game {
       right_gap,
       paddle_mid,
       "ArrowUp",
-      "ArrowDown"
+      "ArrowDown",
     );
     this.ballCircle = new Ball(8, this.width, this.height);
 
@@ -47,10 +51,23 @@ export default class Game {
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
     // Other code goes here...
+    document.addEventListener("keydown", event => {
+      if(event.key === " "){
+        this.paused = !this.paused; 
+        if (this.paused === true){
+          this.paddle1.setSpeed(0);
+          this.paddle2.setSpeed(0);
+        }else{
+          this.paddle1.setSpeed(PADDLE_SPEED);
+          this.paddle2.setSpeed(PADDLE_SPEED);
+        }
+      }
+    });
   }
 
   render() {
     // More code goes here....
+    if(this.paused === false){
     this.gameElement.innerHTML = "";
     let svg = document.createElementNS(SVG_NS, "svg");
     svg.setAttributeNS(null, "width", this.width);
@@ -64,5 +81,6 @@ export default class Game {
     this.ballCircle.render(svg, this.paddle1, this.paddle2); 
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
+    }
   }
 }

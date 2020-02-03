@@ -7,9 +7,8 @@ export const PADDLE_WIDTH = 8;
 export const PADDLE_HEIGHT = 56;
 export const PADDLE_GAP = 10;
 
-export const PADDLE_SPEED = 10;
-
-export const BALL_radius= 8; 
+export const PADDLE_SPEED = 30;
+export const BALL_RADIUS= 8; 
 
 
 
@@ -17,6 +16,6 @@ export const KEYS = {
     p1up: "ArrowUp",        // player 1 up key
     p1down: "ArrowDown",        // player 1 down key
     p2up: "w",       // player 2 up key
-    P2down: "s",     // player 2 down key
+    p2down: "s",     // player 2 down key
     pause: " ", // we'll use this later...
   }

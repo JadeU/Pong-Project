@@ -1,4 +1,4 @@
-import { SVG_NS, PADDLE_SPEED} from "../settings";
+import { SVG_NS, PADDLE_SPEED } from "../settings";
 
 export default class Paddle {
   constructor(boardHeight, width, height, x, y, keyUp, keyDown) {
@@ -7,9 +7,9 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 30;
+    this.speed = PADDLE_SPEED;
     this.score = 0;
-
+    //pass key pressed element here
     document.addEventListener("keydown", event => {
       switch (event.key) {
         case keyUp:
@@ -23,42 +23,42 @@ export default class Paddle {
   }
 
   setSpeed(speed) {
-      this.speed = speed; 
+    this.speed = speed;
   }
 
-getScore(){
+  getScore() {
     return this.score
-}
+  }
 
-increaseScore(){
-    this.score = this.score +1;
-}
+  increaseScore() {
+    this.score = this.score + 1;
+  }
 
-getPaddlePosition(){
-    const position ={
-        top:this.y, 
-        left: this.x,
-        bottom: this.y +this.height,
-        right: this.x + this.width,
+  getPaddlePosition() {
+    const position = {
+      top: this.y,
+      left: this.x,
+      bottom: this.y + this.height,
+      right: this.x + this.width,
     };
 
     return position;
-}
+  }
 
   //moves paddle up
 
   moveUp() {
     this.y = Math.max(0, this.y - this.speed);
     console.log("up! was pressed");
-    
+
   }
 
   //moves paddle down
 
   moveDown() {
-    this.y =Math.min(this.boardHeight - this.height, this.y + this.speed);
+    this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
     console.log("down! was pressed");
-   
+
   }
 
   render(svg) {

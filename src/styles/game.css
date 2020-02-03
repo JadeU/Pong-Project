@@ -74,6 +74,7 @@ body {
   align-items: center;
   display: flex;
   font-family: 'Silkscreen Web', monotype;
+  color: orangered;
   height: 100vh;
   justify-content: center;
   width: 100%;
@@ -83,4 +84,8 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem; 
   text-align: center;
+}
+
+canvas {
+background-image: url(https://unsplash.com/photos/KL9IanHzSE4);
 }

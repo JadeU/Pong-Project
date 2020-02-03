@@ -13,7 +13,7 @@ export default class Score {
     textSvg.setAttributeNS(null, "y", this.y);
     textSvg.setAttributeNS(null, "font-family", "'Silkscreen Web', monotype");
     textSvg.setAttributeNS(null, "font-size", this.size);
-    textSvg.setAttributeNS(null, "fill", "#C02101");
+    textSvg.setAttributeNS(null, "fill", "#ffdd00");
     textSvg.textContent = score;
     svg.appendChild(textSvg);
   }

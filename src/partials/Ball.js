@@ -77,8 +77,21 @@ export default class Ball {
     ballCircle.setAttributeNS(null, "r", this.radius);
     ballCircle.setAttributeNS(null, "cx", this.x);
     ballCircle.setAttributeNS(null, "cy", this.y);
-    ballCircle.setAttributeNS(null, "fill", "white");
+    ballCircle.setAttributeNS(null, "fill", "#FF4F00");
     svg.appendChild(ballCircle);
+    this.ballMove();
+    this.wallCollision(paddle1, paddle2);
+    this.paddleCollision(paddle1, paddle2);
+  }
+  
+  render(svg, paddle1, paddle2){
+    let ballCircle2 = document.createElementNS(SVG_NS, "circle");
+
+    ballCircle2.setAttributeNS(null, "r", this.radius);
+    ballCircle2.setAttributeNS(null, "cx", this.x);
+    ballCircle2.setAttributeNS(null, "cy", this.y);
+    ballCircle2.setAttributeNS(null, "fill", "orangered");
+    svg.appendChild(ballCircle2);
     this.ballMove();
     this.wallCollision(paddle1, paddle2);
     this.paddleCollision(paddle1, paddle2);
